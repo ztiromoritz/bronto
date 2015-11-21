@@ -5,33 +5,57 @@
     <title>Bronto</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script id="character-template" type="text/x-handlebars-template">
+        <div class="character">
+            <h4>{{name}} (level {{level}}  xp {{xp}})</h4>
+            <img class="avatar" src="assets/amber.png" width="64"/>
+            <table>
+                <tr>
+                    <td>HEALTH</td><td><div class="bar health" style="width: {{health}}px;"></div></td>
+                </tr>
+                <tr>
+                    <td>ATTACK</td><td><div class="bar attack" style="width: {{attack}}px;"></div></td>
+                </tr>
+                <tr>
+                    <td>SPEED</td><td><div class="bar speed" style="width: {{speed}}px;"></div></td>
+                </tr>
+                <tr>
+                    <td>JUMP</td><td><div class="bar jump" style="width: {{jump}}px;"></div></td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <script>
+        $(function(){
+            var characterSheet = Handlebars.compile($("#character-template").html());
+            var character = {
+                name : 'Busarakam',
+                level : 2,
+                xp : 220,
+                health : 56,
+                attack : 8,
+                speed : 16,
+                jump : 22
+            };
+            $('#characters').html(characterSheet(character));
+        });
+
+    </script>
+
+
 </head>
 <body>
 	<div style="width: 400px; margin: 10% auto; text-align: center;">
         <img src="assets/egg.png" alt="Pixel Egg" />
 	    <h2>Bronto</h2>
 	    <h3>A dinosaur runner rpg</h3>
-        <div class="textbox">
-            <img class="avatar" src="assets/amber.png" width="64" />
-            <table>
-                <tr>
-                    <td>HEALTH</td><td><div class="bar health" style="width: 56px;"></div></td>
-                </tr>
-                <tr>
-                    <td>ATTACK</td><td><div class="bar attack" style="width: 8px;"></div></td>
-                </tr>
-                <tr>
-                    <td>SPEED</td><td><div class="bar speed" style="width: 16px;"></div></td>
-                </tr>
-                <tr>
-                    <td>JUMP</td><td><div class="bar jump" style="width: 22px;"></div></td>
-                </tr>
-            </table>
+        <div id="characters">
         </div>
+
+        <div class="button">Generate Characters</div>
 	</div>
-
-
-
 </body>
 
 </html>

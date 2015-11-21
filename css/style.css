@@ -17,7 +17,7 @@
 #deeed6
 */
 
-html,body {
+html, body {
     margin: 0;
     padding: 0;
 }
@@ -34,47 +34,70 @@ body {
     font-size: 1.5em;
 }
 
-.textbox {
+.character {
     border: 2px solid #d04648;
     background-color: #dad45e;
     border-radius: 3px;
     margin: 0 auto;
-    width: 180px;
+    width: 260px;
     font-family: "SomepxNew";
     font-size: 1em;
     padding: 0px 0px 7px 9px;
 }
 
-.textbox td{
+.character td {
     text-align: left;
     padding: 0;
     line-height: 0.7;
 }
 
-.textbox .bar{
+.character .bar {
     display: block;
     height: 12px;
     margin-top: 3px;
 }
 
-.textbox .health {
+.character .health {
     background-color: #6daa2c;
 
 }
 
-.textbox .attack {
+.character .attack {
     background-color: #d04648;
 }
 
-.textbox .speed {
+.character .speed {
     background-color: #d27d2c;
 }
 
-.textbox .jump {
+.character .jump {
     background-color: #6dc2ca;
 }
 
+.character h4 {
+    margin: 0;
+    paddin: 0;
+    text-align: left;
+}
+
 .avatar {
-float: left;
-padding-top: 5px;
+    float: left;
+    padding-top: 5px;
+}
+
+.button {
+    border: 2px solid #dad45e;
+    background-color: #d04648;
+    color: #deeed6;
+    text-shadow: 1px 2px #222222;
+    border-radius: 5px;
+    display: block;
+    height: 32px;
+    width: 150px;
+    margin: 15px auto;
+}
+
+.button:hover {
+    background-color:  #442434;
+    text-shadow: 0px 0px #8595a1;
 }
