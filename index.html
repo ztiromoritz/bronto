@@ -12,13 +12,14 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="no" />
     <link href="assets/favicon.png" sizes="16x16" rel="apple-touch-icon" />
+    <meta name="viewport" content="minimal-ui">
 
 
 
     <script id="character-template" type="text/x-handlebars-template">
         <div class="character">
             <h4>{{name}} (level {{level}}  xp {{xp}})</h4>
-            <img class="avatar" src="assets/amber.png" width="64"/>
+            <img class="avatar" src="{{img}}" width="64"/>
             <table>
                 <tr>
                     <td>HEALTH</td><td><div class="bar health" style="width: {{health}}px;"></div></td>
@@ -39,6 +40,7 @@
         $(function(){
             var characterSheet = Handlebars.compile($("#character-template").html());
             var character = {
+                img : 'assets/amber.png',
                 name : 'Busarakam',
                 level : 2,
                 xp : 220,
@@ -55,14 +57,21 @@
 
 </head>
 <body>
-	<div style="width: 400px; margin: 10% auto; text-align: center;">
-        <img src="assets/egg.png" alt="Pixel Egg" />
-	    <h2>Bronto</h2>
+	<div style="width: 400px; margin: 20px auto; text-align: center;">
+	    <h1>Bronto</h1>
 	    <h3>A dinosaur runner rpg</h3>
-        <div id="characters">
+        <div class="button"><img src="assets/egg.png" alt="Pixel Egg" />Generate Character</div>
+        <div id="characters"></div>
+
+
+        <div class="fight">
+
+
+
+
         </div>
 
-        <div class="button">Generate Characters</div>
+        <div class="rules"></div>
 	</div>
 </body>
 
