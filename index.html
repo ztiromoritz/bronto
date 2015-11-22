@@ -12,9 +12,18 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="no" />
     <link href="assets/favicon.png" sizes="16x16" rel="apple-touch-icon" />
+    <!--
+    <link href="path/to/icon-152x152.png" sizes="152x152" rel="apple-touch-icon" />
+    <link href="path/to/icon-144x144.png" sizes="144x144" rel="apple-touch-icon" />
+    <link href="path/to/icon-120x120.png" sizes="120x120" rel="apple-touch-icon" />
+    <link href="path/to/icon-114x114.png" sizes="114x114" rel="apple-touch-icon" />
+    <link href="path/to/icon-76x76.png"   sizes="76x76"   rel="apple-touch-icon" />
+    <link href="path/to/icon-72x72.png"   sizes="72x72"   rel="apple-touch-icon" />
+    <link href="path/to/icon-60x60.png"   sizes="60x60"   rel="apple-touch-icon" />
+    <link href="path/to/icon-57x57.png"   sizes="57x57"   rel="apple-touch-icon" />
+    -->
+
     <meta name="viewport" content="minimal-ui">
-
-
 
     <script id="character-template" type="text/x-handlebars-template">
         <div class="character">
@@ -26,6 +35,9 @@
                 </tr>
                 <tr>
                     <td>ATTACK</td><td><div class="bar attack" style="width: {{attack}}px;"></div></td>
+                </tr>
+                <tr>
+                    <td>STRENGTH</td><td><div class="bar strength" style="width: {{strength}}px;"></div></td>
                 </tr>
                 <tr>
                     <td>SPEED</td><td><div class="bar speed" style="width: {{speed}}px;"></div></td>
@@ -46,6 +58,7 @@
                 xp : 220,
                 health : 56,
                 attack : 8,
+                strength : 20,
                 speed : 16,
                 jump : 22
             };
@@ -71,7 +84,10 @@
 
         </div>
 
-        <div class="rules"></div>
+        <div class="rules">
+
+
+        </div>
 	</div>
 </body>
 

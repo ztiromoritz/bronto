@@ -85,8 +85,12 @@ h3 {
 
 }
 
-.character .attack {
+.character .strength {
     background-color: #d04648;
+}
+
+.character .attack {
+    background-color: #30346d;
 }
 
 .character .speed {
@@ -96,6 +100,8 @@ h3 {
 .character .jump {
     background-color: #6dc2ca;
 }
+
+
 
 .character h4 {
     margin: 0;

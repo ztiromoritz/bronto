@@ -1,0 +1,2 @@
+ * M A M M A L S -- attack, slows you down, the fly around
+ * Strength as value
