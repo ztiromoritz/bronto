@@ -134,3 +134,99 @@ h3 {
 .button img {
     float: left;
 }
+
+.screen {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    width: 480px;
+    height: 320px;
+    background-color: #deeed6;
+}
+
+
+.frame {
+    border: 2px solid #d04648;
+    background-color: #dad45e;
+    border-radius: 3px;
+    margin: 10px auto;
+    width: 460px;
+    height: 300px;
+    font-family: "SomepxNew";
+    font-size: 1em;
+}
+
+.ball {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    background-color: #deeed6;
+    z-index: 5;
+}
+
+.rlv, .choice {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #deeed6;
+    z-index: 4;
+}
+
+.ball img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#oponentFrame img{
+    transform: scale(-1,1);
+}
+
+#charFrame  {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+}
+
+#charRock, #charLeave, #charVolcano {
+    position: absolute;
+    top: 145px;
+    left: 45px;
+}
+
+.rock {
+    background: #6daa2c url('../assets/ui/ui-03.png') no-repeat center center;
+}
+
+.leave {
+    background: #deeed6 url('../assets/ui/ui-04.png') no-repeat center center;
+}
+
+.volcano {
+    background: #597dce url('../assets/ui/ui-05.png') no-repeat center center;
+}
+
+.choice {
+    background-color: #442434;
+    color: #deeed6;
+    line-height: 50px;
+    font-size: 32px;
+}
+
+
+
+#oponentFrame {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+}
+
+#oponentChoice {
+    position: absolute;
+    top: 145px;
+    right: 45px;
+}

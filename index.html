@@ -8,6 +8,8 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
 
+    <script src="js/fight.js"></script>
+
     <meta name="apple-mobile-web-app-title" content="Bronto" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="no" />
@@ -70,12 +72,53 @@
 
 </head>
 <body>
-	<div style="width: 400px; margin: 20px auto; text-align: center;">
+	<div style="width: 480px; margin: 20px auto; text-align: center;">
 	    <h1>Bronto</h1>
 	    <h3>A dinosaur runner rpg</h3>
         <div class="button"><img src="assets/egg.png" alt="Pixel Egg" />Generate Character</div>
         <div id="characters"></div>
 
+
+
+
+        <div class="screen">
+            <div class="frame">
+                <div class="fight">
+
+                <h2>Busarakam is challanged by Mesud</h2>
+                <div class="char">
+                    <div id="charFrame" class="ball">
+                        <img class="avatar" src="assets/amber.png" width="64"/>
+                    </div>
+                    <div id="charRock" class="ball rlv rock"></div>
+                    <div id="charLeave" class="ball rlv leave"></div>
+                    <div id="charVolcano" class="ball rlv volcano"></div>
+                    <table>
+                        <tr>
+                            <td>HEALTH</td><td><div class="bar health" style="width: 30px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>ATTACK</td><td><div class="bar attack" style="width: 10px;"></div></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="oponent">
+                    <div id="oponentFrame" class="ball">
+                        <img class="avatar" src="assets/amber.png" width="64"/>
+                    </div>
+                    <div id="oponentChoice" class="ball choice">?</div>
+                    <table>
+                        <tr>
+                            <td>HEALTH</td><td><div class="bar health" style="width: 10px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>ATTACK</td><td><div class="bar attack" style="width: 10px;"></div></td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
 
         <div class="fight">
 

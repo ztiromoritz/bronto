@@ -1,2 +1,7 @@
  * M A M M A L S -- attack, slows you down, the fly around
  * Strength as value
+
+
+ * Give the oponents a bias or strategy in rlv.
+ * Give the player hints about the oponents strategies as scrolls
+ 

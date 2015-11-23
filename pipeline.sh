@@ -1,12 +1,13 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-set -- `getopt "hrs" "$@"`
+set -- `getopt "hrsu" "$@"`
 while :; do
   case "$1" in
     -h) help="true" ;;
     -s) split="true" ;;
     -r) recolor="true" ;;
+    -u) ui="true";;
     --) break ;;
   esac
   shift
@@ -22,6 +23,7 @@ if [ "$help" == "true" ];then
         echo " -h show this help"
         echo " -s split master spritesheet"
         echo " -r recolor and generate alternatives"
+        echo " -u generate ui elements"
         exit
 fi
 
@@ -116,4 +118,10 @@ if [ "$recolor" == "true" ];then
     standardTwoColor kind-15
 
 
+fi
+
+uiMaster='./assets/pyxel/rockLeaveVulcano.png'
+uiOut='./assets/ui'
+if [ "$ui" == "true" ];then
+    convert ${uiMaster} -crop 32x32 ${uiOut}/ui-%02d.png
 fi
