@@ -68,36 +68,59 @@ h3 {
     padding: 0px 0px 7px 9px;
 }
 
-.character td {
-    text-align: left;
-    padding: 0;
-    line-height: 0.7;
+table.left div {
+    float: left;
 }
 
-.character .bar {
+table.right div {
+    float: right
+}
+
+td {
+    line-height: 0.7;
+    padding: 0;
+}
+
+.bar {
     display: block;
     height: 12px;
     margin-top: 3px;
 }
 
-.character .health {
+.health {
+    position: relative;
+    background-color: #deeed6 ;
+}
+
+.current_health_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
     background-color: #6daa2c;
-
 }
 
-.character .strength {
-    background-color: #d04648;
+.current_health_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #6daa2c;
 }
 
-.character .attack {
+.strength {
     background-color: #30346d;
 }
 
-.character .speed {
+.attack {
+    background-color: #d04648;
+}
+
+.speed {
     background-color: #d27d2c;
 }
 
-.character .jump {
+.jump {
     background-color: #6dc2ca;
 }
 
@@ -165,10 +188,14 @@ h3 {
     z-index: 6;
 }
 
+.fight h2 {
+    margin-top: 4px;
+}
+
 .rlv, .choice {
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
     background-color: #deeed6;
     z-index: 4;
 }
@@ -188,14 +215,27 @@ h3 {
 
 #charFrame  {
     position: absolute;
-    top: 120px;
+    top: 100px;
     left: 20px;
+}
+
+#oponentFrame {
+    position: absolute;
+    top: 100px;
+    right: 20px;
 }
 
 #charRock, #charLeave, #charVolcano {
     position: absolute;
-    top: 145px;
-    left: 45px;
+    top: 115px;
+    left: 35px;
+}
+
+
+#oponentChoice {
+    position: absolute;
+    top: 115px;
+    right: 35px;
 }
 
 .rock {
@@ -217,16 +257,18 @@ h3 {
     font-size: 32px;
 }
 
-
-
-#oponentFrame {
+.char table{
     position: absolute;
-    top: 120px;
+    top: 240px;
+    left: 20px;
+}
+
+.oponent table {
+    position: absolute;
+    top: 240px;
     right: 20px;
 }
 
-#oponentChoice {
-    position: absolute;
-    top: 145px;
-    right: 45px;
-}
+
+
+

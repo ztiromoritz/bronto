@@ -5,16 +5,17 @@
     <title>Bronto</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/phaser/phaser.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
 
     <script src="js/fight.js"></script>
 
-    <meta name="apple-mobile-web-app-title" content="Bronto" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="no" />
-    <link href="assets/favicon.png" sizes="16x16" rel="apple-touch-icon" />
+    <meta name="apple-mobile-web-app-title" content="Bronto"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <link href="assets/favicon.png" sizes="16x16" rel="apple-touch-icon"/>
     <!--
     <link href="path/to/icon-152x152.png" sizes="152x152" rel="apple-touch-icon" />
     <link href="path/to/icon-144x144.png" sizes="144x144" rel="apple-touch-icon" />
@@ -25,47 +26,61 @@
     <link href="path/to/icon-60x60.png"   sizes="60x60"   rel="apple-touch-icon" />
     <link href="path/to/icon-57x57.png"   sizes="57x57"   rel="apple-touch-icon" />
     -->
-
     <meta name="viewport" content="minimal-ui">
 
-    <script id="character-template" type="text/x-handlebars-template">
-        <div class="character">
-            <h4>{{name}} (level {{level}}  xp {{xp}})</h4>
-            <img class="avatar" src="{{img}}" width="64"/>
-            <table>
-                <tr>
-                    <td>HEALTH</td><td><div class="bar health" style="width: {{health}}px;"></div></td>
-                </tr>
-                <tr>
-                    <td>ATTACK</td><td><div class="bar attack" style="width: {{attack}}px;"></div></td>
-                </tr>
-                <tr>
-                    <td>STRENGTH</td><td><div class="bar strength" style="width: {{strength}}px;"></div></td>
-                </tr>
-                <tr>
-                    <td>SPEED</td><td><div class="bar speed" style="width: {{speed}}px;"></div></td>
-                </tr>
-                <tr>
-                    <td>JUMP</td><td><div class="bar jump" style="width: {{jump}}px;"></div></td>
-                </tr>
-            </table>
-        </div>
-    </script>
+    <script id="character-template" type="text/x-handlebars-template" src="./tpl/character.html"></script>
+    <script id="fight-template" type="text/x-handlebars-template" src="./tpl/fight.html"></script>
     <script>
-        $(function(){
-            var characterSheet = Handlebars.compile($("#character-template").html());
-            var character = {
-                img : 'assets/amber.png',
-                name : 'Busarakam',
-                level : 2,
-                xp : 220,
-                health : 56,
-                attack : 8,
-                strength : 20,
-                speed : 16,
-                jump : 22
-            };
-            $('#characters').html(characterSheet(character));
+
+        var $$; //the game
+
+
+        $(function () {
+
+            function characterTest(){
+                var characterSheet = Handlebars.compile($$.cache.getText("character-template"));
+                var character = {
+                    img: 'assets/amber.png',
+                    name: 'Busarakam',
+                    level: 2,
+                    xp: 220,
+                    health: 56,
+                    current_health: 56,
+                    attack: 8,
+                    strength: 20,
+                    speed: 16,
+                    jump: 22
+                };
+                $('#characters').html(characterSheet(character));
+            }
+
+            function preload(){
+                //Also used to load handlebar templates
+                this.load.text('character-template','./tpl/character.html');
+                this.load.text('fight-template','./tpl/fight.html');
+            }
+
+            function create(){
+                characterTest();
+                $.fight.init();
+            }
+
+            function update(){
+
+            }
+
+
+
+            $$ = new Phaser.Game(480, 320,
+                    Phaser.AUTO,
+                    'game',
+                    {preload: preload, create: create, update: update},
+                    false, //transparent
+                    true   //antialias
+            );
+
+
+
         });
 
     </script>
@@ -73,66 +88,24 @@
 
 </head>
 <body>
-	<div style="width: 480px; margin: 20px auto; text-align: center;">
-	    <h1>Bronto</h1>
-	    <h3>A dinosaur runner rpg</h3>
-        <div class="button"><img src="assets/egg.png" alt="Pixel Egg" />Generate Character</div>
-        <div id="characters"></div>
+<div style="width: 480px; margin: 20px auto; text-align: center;">
+    <h1>Bronto</h1>
+
+    <h3>A dinosaur runner rpg</h3>
+
+    <div class="button"><img src="assets/egg.png" alt="Pixel Egg"/>Generate Character</div>
+    <div id="characters"></div>
 
 
+    <div id="fight_screen" class="screen">
+
+    </div>
 
 
-        <div class="screen">
-            <div class="frame">
-                <div class="fight">
+    <div id="game">
 
-                <h2>Busarakam is challanged by Mesud</h2>
-                <div class="char">
-                    <div id="charFrame" class="ball">
-                        <img class="avatar" src="assets/amber.png" width="64"/>
-                    </div>
-                    <div id="charRock" class="ball rlv rock"></div>
-                    <div id="charLeave" class="ball rlv leave"></div>
-                    <div id="charVolcano" class="ball rlv volcano"></div>
-                    <table>
-                        <tr>
-                            <td>HEALTH</td><td><div class="bar health" style="width: 30px;"></div></td>
-                        </tr>
-                        <tr>
-                            <td>ATTACK</td><td><div class="bar attack" style="width: 10px;"></div></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="oponent">
-                    <div id="oponentFrame" class="ball">
-                        <img class="avatar" src="assets/amber.png" width="64"/>
-                    </div>
-                    <div id="oponentChoice" class="ball choice">?</div>
-                    <table>
-                        <tr>
-                            <td>HEALTH</td><td><div class="bar health" style="width: 10px;"></div></td>
-                        </tr>
-                        <tr>
-                            <td>ATTACK</td><td><div class="bar attack" style="width: 10px;"></div></td>
-                        </tr>
-                    </table>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="fight">
-
-
-
-
-        </div>
-
-        <div class="rules">
-
-
-        </div>
-	</div>
+    </div>
+</div>
 </body>
 
 </html>
