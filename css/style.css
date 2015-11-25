@@ -22,6 +22,12 @@ html, body {
     padding: 0;
 }
 
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 img {
     image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
     image-rendering: -moz-crisp-edges;          /* Firefox                        */
@@ -209,7 +215,7 @@ td {
     bottom: 0;
 }
 
-#oponentFrame img{
+#charFrame img{
     transform: scale(-1,1);
 }
 
@@ -217,12 +223,14 @@ td {
     position: absolute;
     top: 100px;
     left: 20px;
+    border: 2px solid #d27d2c;
 }
 
-#oponentFrame {
+#opponentFrame {
     position: absolute;
     top: 100px;
     right: 20px;
+    border: 2px solid #6dc2ca;
 }
 
 #charRock, #charLeave, #charVolcano {
@@ -232,7 +240,7 @@ td {
 }
 
 
-#oponentChoice {
+#opponentChoice {
     position: absolute;
     top: 115px;
     right: 35px;
@@ -263,12 +271,61 @@ td {
     left: 20px;
 }
 
-.oponent table {
+.opponent table {
     position: absolute;
     top: 240px;
     right: 20px;
 }
 
+.point {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    z-index: 10;
+    opacity: 0;
+}
+
+.opponent .point {
+    background-color: #6dc2ca;
+}
+
+
+.char .point {
+    background-color: #d27d2c;
+}
+
+
+
+#charPoint1 {
+    left: 20px;
+    top: 200px;
+}
+
+#charPoint2 {
+    left: 40px;
+    top: 200px;
+}
+
+#charPoint3 {
+    left: 60px;
+    top: 200px;
+}
+
+#opponentPoint1 {
+    right: 20px;
+    top: 200px;
+}
+
+#opponentPoint2 {
+    right: 40px;
+    top: 200px;
+}
+
+#opponentPoint3 {
+    right: 60px;
+    top: 200px;
+}
 
 
 

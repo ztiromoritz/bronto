@@ -1,48 +1,54 @@
 <div class="frame">
     <div class="fight">
-        <h2>Busarakam is challanged by Mesud</h2>
+        <h2 id="fightMessage">{{player.name}} is challanged by {{opponent.name}} </h2>
 
         <div class="char">
             <div id="charFrame" class="ball">
-                <img class="avatar" src="assets/amber.png" width="64"/>
+                <img class="avatar" src="{{player.img}}" width="64"/>
             </div>
             <div id="charRock" class="ball rlv rock"></div>
             <div id="charLeave" class="ball rlv leave"></div>
             <div id="charVolcano" class="ball rlv volcano"></div>
+            <div class="point" id="charPoint1"></div>
+            <div class="point" id="charPoint2"></div>
+            <div class="point" id="charPoint3"></div>
             <table class="left">
                 <tr>
                     <td>HEALTH</td>
                     <td>
-                        <div class="bar health" style="width: 30px;">
-                            <div class="current_health_left" style="width: 20px;"></div>
+                        <div class="bar health" style="width: {{player.health}}px;">
+                            <div class="current_health_left" style="width: {{player.current_health}}px;"></div>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>ATTACK</td>
                     <td>
-                        <div class="bar attack" style="width: 10px;"></div>
+                        <div class="bar attack" style="width: {{player.attack}}px;"></div>
                     </td>
                 </tr>
             </table>
         </div>
-        <div class="oponent">
-            <div id="oponentFrame" class="ball">
-                <img class="avatar" src="assets/amber.png" width="64"/>
+        <div class="opponent">
+            <div id="opponentFrame" class="ball">
+                <img class="avatar" src="{{opponent.img}}" width="64"/>
             </div>
-            <div id="oponentChoice" class="ball choice"></div>
+            <div id="opponentChoice" class="ball choice"></div>
+            <div class="point" id="opponentPoint1"></div>
+            <div class="point" id="opponentPoint2"></div>
+            <div class="point" id="opponentPoint3"></div>
             <table class="right">
                 <tr>
                     <td>
-                        <div class="bar health" style="width: 20px;">
-                            <div class="current_health_right" style="width: 8px;"></div>
+                        <div class="bar health" style="width: {{opponent.health}}px;">
+                            <div class="current_health_right" style="width: {{opponent.current_health}}px;"></div>
                         </div>
                     </td>
                     <td>HEALTH</td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="bar attack" style="width: 10px;"></div>
+                        <div class="bar attack" style="width: {{opponent.attack}}px;"></div>
                     </td>
                     <td>ATTACK</td>
                 </tr>

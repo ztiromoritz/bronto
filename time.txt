@@ -7,3 +7,7 @@
 23.11.; 09:30-11:00 ; 1:30 -> fight system step one
 23.11.; 12:00-12:30 ; 0:30 -> animate schmanimate
 23.11.; 13:00-13:45 ; =:45 -> preload
+24.11.; 13:00-14:00 ; 1:00 -> fight script is growing
+24.11.; 15:00-16:00 ; 1:00 -> 
+25.11.; 16:00-16:30 ; 0:30 -> fight fight
+25.11.; 21:10-00:10 ; 3:00 -> fight almost finished, some sounds allready added

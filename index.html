@@ -8,9 +8,9 @@
     <script src="js/phaser/phaser.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
 
-    <script src="js/fight.js"></script>
 
     <meta name="apple-mobile-web-app-title" content="Bronto"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -28,29 +28,53 @@
     -->
     <meta name="viewport" content="minimal-ui">
 
-    <script id="character-template" type="text/x-handlebars-template" src="./tpl/character.html"></script>
-    <script id="fight-template" type="text/x-handlebars-template" src="./tpl/fight.html"></script>
     <script>
 
-        var $$; //the game
+        // Use $$(function(){ ....}) instead of jqueries $(function(){...}) to run code after loading all assets
+        // $$ is a holder for all global stuff.
+        var $$ = function(callback){
+            $$.preloadCallbacks.push(callback);
+        }; //the game
+        $$.preloadCallbacks = [];
+        $$.init = function (){
+            for(var i = 0; i<$$.preloadCallbacks.length; i++){
+                if(_.isFunction($$.preloadCallbacks[i]))
+                    $$.preloadCallbacks[i]($$);
+            }
+        };
+        //=============
+
+        var character = {
+            img: 'assets/amber.png',
+            name: 'Busarakam',
+            level: 2,
+            xp: 220,
+            health: 56,
+            current_health: 56,
+            attack: 8,
+            strength: 20,
+            speed: 16,
+            jump: 22
+        };
+
+        var opponent = {
+            img: 'assets/chuck.png',
+            name: 'Olaf',
+            level: 2,
+            xp: 220,
+            health: 10,
+            current_health: 10,
+            attack: 4,
+            strength: 20,
+            speed: 16,
+            jump: 22
+        };
 
 
         $(function () {
-
             function characterTest(){
-                var characterSheet = Handlebars.compile($$.cache.getText("character-template"));
-                var character = {
-                    img: 'assets/amber.png',
-                    name: 'Busarakam',
-                    level: 2,
-                    xp: 220,
-                    health: 56,
-                    current_health: 56,
-                    attack: 8,
-                    strength: 20,
-                    speed: 16,
-                    jump: 22
-                };
+                var characterSheet = Handlebars.compile($$.game.cache.getText("character-template"));
+
                 $('#characters').html(characterSheet(character));
             }
 
@@ -58,20 +82,32 @@
                 //Also used to load handlebar templates
                 this.load.text('character-template','./tpl/character.html');
                 this.load.text('fight-template','./tpl/fight.html');
+                this.load.audio('served', 'assets/sounds/cardServed.wav');
+                this.load.audio('point', 'assets/sounds/point.wav');
+                this.load.audio('hit', 'assets/sounds/hit.wav');
             }
 
             function create(){
+                $$.init();
+                //TODO: sound class
+                $$.sounds = {}
+                $$.sounds.served = this.add.audio('served');
+                $$.sounds.served.allowMultiple = true;
+                $$.sounds.point = this.add.audio('point');
+                $$.sounds.point.allowMultiple = true;
+                $$.sounds.hit = this.add.audio('hit');
+                $$.sounds.hit.allowMultiple = true;
+                this.sound.mute = false;
+
                 characterTest();
-                $.fight.init();
+                $$.fight.init(character, opponent);
             }
 
             function update(){
 
             }
 
-
-
-            $$ = new Phaser.Game(480, 320,
+            $$.game = new Phaser.Game(480, 320,
                     Phaser.AUTO,
                     'game',
                     {preload: preload, create: create, update: update},
@@ -79,11 +115,10 @@
                     true   //antialias
             );
 
-
-
         });
 
     </script>
+    <script src="js/fight.js"></script>
 
 
 </head>
