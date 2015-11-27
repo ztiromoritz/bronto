@@ -1,0 +1,359 @@
+/*
+#140c1c
+#442434
+#30346d
+#4e4a4e
+#854c30
+#346524
+#d04648
+#757161
+#597dce
+#d27d2c
+#8595a1
+#6daa2c
+#d2aa99
+#6dc2ca
+#dad45e
+#deeed6
+*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img {
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+@font-face {
+    font-family: "SomepxNew";
+    src: url("../assets/fonts/SomepxNew.woff") format('woff');
+}
+
+body {
+    background-color: #597dce;
+    color: #442434;
+    font-family: "SomepxNew";
+    font-size: 1.5em;
+}
+
+h1 {
+    text-shadow: 1px 1px #8595a1;
+    transform:scale(1.5,1);
+    -webkit-transform:scale(1.5,1);
+    margin-bottom: 6px;
+    margin-top: 0px;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-bottom : 5px;
+}
+
+.character {
+    border: 2px solid #d04648;
+    background-color: #dad45e;
+    border-radius: 3px;
+    margin: 0 auto;
+    width: 260px;
+    font-family: "SomepxNew";
+    font-size: 1em;
+    padding: 0px 0px 7px 9px;
+}
+
+table.left div {
+    float: left;
+}
+
+table.right div {
+    float: right
+}
+
+td {
+    line-height: 0.7;
+    padding: 0;
+}
+
+.bar {
+    display: block;
+    height: 12px;
+    margin-top: 3px;
+}
+
+.health {
+    position: relative;
+    background-color: #deeed6 ;
+}
+
+.current_health_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #6daa2c;
+}
+
+.current_health_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #6daa2c;
+}
+
+.strength {
+    background-color: #30346d;
+}
+
+.attack {
+    background-color: #d04648;
+}
+
+.speed {
+    background-color: #d27d2c;
+}
+
+.jump {
+    background-color: #6dc2ca;
+}
+
+
+
+.character h4 {
+    margin: 0;
+    paddin: 0;
+    text-align: left;
+}
+
+.avatar {
+    float: left;
+    padding-top: 5px;
+}
+
+.button {
+    border: 2px solid #dad45e;
+    background-color: #d04648;
+    color: #deeed6;
+    text-shadow: 1px 2px #222222;
+    border-radius: 5px;
+    display: block;
+    height: 32px;
+    width: 200px;
+    margin: 15px auto;
+}
+
+.button:hover {
+    background-color:  #442434;
+    text-shadow: 0px 0px #8595a1;
+}
+
+.button img {
+    float: left;
+}
+
+#wrapper {
+    transform: scale(2);
+    position: relative;
+    width: 480px;
+    height: 320px;
+    margin: 0 auto;
+    display: block;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 320px;
+
+}
+
+.stretch {
+    min-height:100%;
+    width:auto;
+    height:auto; overflow:hidden;
+}
+
+
+#background {
+    overflow: hidden;
+    opacity: 0.1;
+    filter: alpha(opacity=15); /* For IE8 and earlier */
+}
+
+#background2 {
+    background-color: #deeed6;
+}
+
+
+
+
+.frame {
+    border: 2px solid #d04648;
+    background-color: #dad45e;
+    border-radius: 3px;
+    margin: 10px auto;
+    width: 460px;
+    height: 300px;
+    font-family: "SomepxNew";
+    font-size: 1em;
+}
+
+.ball {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    background-color: #deeed6;
+    z-index: 6;
+}
+
+.fight h2 {
+    margin-top: 4px;
+}
+
+.rlv, .choice {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #deeed6;
+    z-index: 4;
+}
+
+.ball img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#charFrame img{
+    transform: scale(-1,1);
+}
+
+#charFrame  {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    border: 2px solid #d27d2c;
+}
+
+#opponentFrame {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    border: 2px solid #6dc2ca;
+}
+
+#charRock, #charLeave, #charVolcano {
+    position: absolute;
+    top: 115px;
+    left: 35px;
+}
+
+
+#opponentChoice {
+    position: absolute;
+    top: 115px;
+    right: 35px;
+}
+
+.rock {
+    background: #6daa2c url('../assets/ui/ui-03.png') no-repeat center center;
+}
+
+.leave {
+    background: #deeed6 url('../assets/ui/ui-04.png') no-repeat center center;
+}
+
+.volcano {
+    background: #597dce url('../assets/ui/ui-05.png') no-repeat center center;
+}
+
+.choice {
+    background-color: #442434;
+    color: #deeed6;
+    line-height: 50px;
+    font-size: 32px;
+}
+
+.char table{
+    position: absolute;
+    top: 240px;
+    left: 20px;
+}
+
+.opponent table {
+    position: absolute;
+    top: 240px;
+    right: 20px;
+}
+
+.point {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    z-index: 10;
+    opacity: 0;
+}
+
+.opponent .point {
+    background-color: #6dc2ca;
+}
+
+
+.char .point {
+    background-color: #d27d2c;
+}
+
+
+
+#charPoint1 {
+    left: 20px;
+    top: 200px;
+}
+
+#charPoint2 {
+    left: 40px;
+    top: 200px;
+}
+
+#charPoint3 {
+    left: 60px;
+    top: 200px;
+}
+
+#opponentPoint1 {
+    right: 20px;
+    top: 200px;
+}
+
+#opponentPoint2 {
+    right: 40px;
+    top: 200px;
+}
+
+#opponentPoint3 {
+    right: 60px;
+    top: 200px;
+}
+
+
+
