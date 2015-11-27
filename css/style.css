@@ -44,7 +44,7 @@ img {
 }
 
 body {
-    background-color: #deeed6;
+    background-color: #597dce;
     color: #442434;
     font-family: "SomepxNew";
     font-size: 1.5em;
@@ -164,14 +164,42 @@ td {
     float: left;
 }
 
-.screen {
-    margin: 0 auto;
-    display: block;
+#wrapper {
+    transform: scale(2);
     position: relative;
     width: 480px;
     height: 320px;
+    margin: 0 auto;
+    display: block;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 320px;
+
+}
+
+.stretch {
+    min-height:100%;
+    width:auto;
+    height:auto; overflow:hidden;
+}
+
+
+#background {
+    overflow: hidden;
+    opacity: 0.1;
+    filter: alpha(opacity=15); /* For IE8 and earlier */
+}
+
+#background2 {
     background-color: #deeed6;
 }
+
+
 
 
 .frame {

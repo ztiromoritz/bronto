@@ -1,13 +1,14 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-set -- `getopt "hrsu" "$@"`
+set -- `getopt "hrsut" "$@"`
 while :; do
   case "$1" in
     -h) help="true" ;;
     -s) split="true" ;;
     -r) recolor="true" ;;
     -u) ui="true";;
+    -t) tiled="true";;
     --) break ;;
   esac
   shift
@@ -24,14 +25,21 @@ if [ "$help" == "true" ];then
         echo " -s split master spritesheet"
         echo " -r recolor and generate alternatives"
         echo " -u generate ui elements"
+        echo " -t generate json maps"
         exit
 fi
 
 
 if [ "$split" == "true" ];then
     echo "split $master"
-    convert ${master} -crop 256x32 ${out}/kind-%02d-00.png
+    convert ${master} -crop 384x32 ${out}/kind-%02d-00.png
 fi
+
+tiledCommand="/Applications/Tiled.app/Contents/MacOS/Tiled --export-map"
+if [ "$tiled" == "true" ];then
+  $tiledCommand assets/tiled/level1.tmx assets/tiled/level1.json 
+fi
+
 
 ##
 #Parameter $1 - kind prefix

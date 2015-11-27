@@ -11,6 +11,9 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
 
+    <script src="js/bronto.player.js"></script>
+    <script src="js/bronto.util.js"></script>
+
 
     <meta name="apple-mobile-web-app-title" content="Bronto"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -72,6 +75,9 @@
 
 
         $(function () {
+
+            var tileLayer;
+
             function characterTest(){
                 var characterSheet = Handlebars.compile($$.game.cache.getText("character-template"));
 
@@ -85,9 +91,16 @@
                 this.load.audio('served', 'assets/sounds/cardServed.wav');
                 this.load.audio('point', 'assets/sounds/point.wav');
                 this.load.audio('hit', 'assets/sounds/hit.wav');
+
+                this.load.spritesheet('dino', 'assets/kinds/kind-02-00.png', 32, 32);
+
+                this.load.spritesheet('background_tileset', 'assets/pyxel/background_tileset.png', 16, 16);
+                this.load.tilemap('level1', 'assets/tiled/level1.json', null, Phaser.Tilemap.TILED_JSON);
+                this.stage.smoothed = false;
             }
 
             function create(){
+                this.stage.smoothed = false;
                 $$.init();
                 //TODO: sound class
                 $$.sounds = {}
@@ -97,21 +110,34 @@
                 $$.sounds.point.allowMultiple = true;
                 $$.sounds.hit = this.add.audio('hit');
                 $$.sounds.hit.allowMultiple = true;
-                this.sound.mute = false;
+                this.sound.mute = true;
 
-                characterTest();
-                $$.fight.init(character, opponent);
+                //characterTest();
+               // $$.fight.init(character, opponent);
+                this.physics.startSystem(Phaser.Physics.ARCADE);
+
+                var map = this.add.tilemap('level1');
+                map.addTilesetImage('background_tileset', 'background_tileset');
+                tileLayer = map.createLayer('Ground');
+                tileLayer.resizeWorld();
+                map.setCollision(getGIDs('solid', map, "solid"), true, tileLayer);
+                console.log(getGIDs('solid', map, "solid"));
+
+                player = new Player($$.game,30, 10);
+                this.add.existing(player);
+                this.camera.follow(player);
+
             }
 
             function update(){
-
+                this.physics.arcade.collide(player, tileLayer);
             }
 
             $$.game = new Phaser.Game(480, 320,
                     Phaser.AUTO,
                     'game',
                     {preload: preload, create: create, update: update},
-                    false, //transparent
+                    true, //transparent
                     true   //antialias
             );
 
@@ -124,22 +150,39 @@
 </head>
 <body>
 <div style="width: 480px; margin: 20px auto; text-align: center;">
+
+    <div class="title">
+
     <h1>Bronto</h1>
 
     <h3>A dinosaur runner rpg</h3>
 
+    </div>
+
+
+
+    <div id="wrapper">
+
+        <div id="background2" class="screen">
+
+        </div>
+
+        <div id="background" class="screen">
+            <img src="assets/out.gif" class="stretch" alt="" />
+        </div>
+
+        <div id="fight_screen" class="screen">
+
+        </div>
+
+        <div id="game" class="screen">
+
+        </div>
+
+    </div>
+
     <div class="button"><img src="assets/egg.png" alt="Pixel Egg"/>Generate Character</div>
     <div id="characters"></div>
-
-
-    <div id="fight_screen" class="screen">
-
-    </div>
-
-
-    <div id="game">
-
-    </div>
 </div>
 </body>
 
