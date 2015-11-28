@@ -1,7 +1,16 @@
- * M A M M A L S -- attack, slows you down, the fly around
  * Strength as value
-
-
+ * Runner physics
+ * npc and character generator
+ * run and fight
+ * 
+ * leveling
+ * level1+level2
+ * M A M M A L S -- attack, slows you down, the fly around
+ * credits
+ * loading screen
+ * create random player... , dice sprite
+ * store player.
+ 
  * Give the oponents a bias or strategy in rlv.
  * Give the player hints about the oponents strategies as scrolls
  

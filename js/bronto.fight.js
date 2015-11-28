@@ -85,11 +85,6 @@ $$(function ($$) {
     var winCallback;
     var loseCallback;
 
-
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
     function checkChoice() {
         if (choiceRunning) {
             if (reveal === -1 || reveal !== currentChoice) {

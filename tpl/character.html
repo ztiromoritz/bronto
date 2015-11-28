@@ -1,7 +1,17 @@
 <div class="character">
-    <h4>{{name}} (level {{level}} xp {{xp}})</h4>
-    <img class="avatar" src="{{img}}" width="64"/>
+    <h4>{{name}}</h4>
+    <img class="avatar" src="./assets/kinds/avatars/{{variant.filename}}" width="64"/>
     <table class="left">
+        <tr>
+            <td style="width:80px;">LEVEL/XP</td>
+            <td style="width:120px;">
+                {{level}}/{{xp}}
+            </td>
+            <td style="width:80px;">STRENGTH</td>
+            <td style="width:120px;">
+                <div class="bar strength" style="width: {{strength}}px;"></div>
+            </td>
+        </tr>
         <tr>
             <td>HEALTH</td>
             <td>
@@ -9,26 +19,16 @@
                     <div class="current_health_left" style="width: {{current_health}}px;"></div>
                 </div>
             </td>
-        </tr>
-        <tr>
-            <td>ATTACK</td>
-            <td>
-                <div class="bar attack" style="width: {{attack}}px;"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>STRENGTH</td>
-            <td>
-                <div class="bar strength" style="width: {{strength}}px;"></div>
-            </td>
-        </tr>
-        <tr>
             <td>SPEED</td>
             <td>
                 <div class="bar speed" style="width: {{speed}}px;"></div>
             </td>
         </tr>
         <tr>
+            <td>ATTACK</td>
+            <td>
+                <div class="bar attack" style="width: {{attack}}px;"></div>
+            </td>
             <td>JUMP</td>
             <td>
                 <div class="bar jump" style="width: {{jump}}px;"></div>
