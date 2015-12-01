@@ -30,6 +30,21 @@ html, body {
     box-sizing: border-box;
 }
 
+#container {
+    position: absolute;
+    top: 50%;
+    margin-top: -160px;/* half of #content height*/
+    left: 0;
+    width: 100%;
+}
+
+#window {
+    width: 480px;
+    height: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 
 img, canvas {
     image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
@@ -240,7 +255,7 @@ td {
     position: relative;
     width: 480px;
     height: 320px;
-    margin: 200px auto;
+    margin: 0px auto;
     display: block;
 }
 
@@ -262,8 +277,8 @@ td {
 
 #background {
     overflow: hidden;
-    opacity: 0.2;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 #background2 {
