@@ -5,6 +5,53 @@
 (function (global) {
     global.assets = {};
 
+
+
+    global.assets.preload = function () {
+        var game = $$.game;
+
+        //Handlebar templates
+        game.load.text('title-template', './tpl/title.html');
+        game.load.text('credits-template', './tpl/credits.html');
+        game.load.text('characterOverview-template', './tpl/characterOverview.html');
+        game.load.text('character-template', './tpl/character.html');
+        game.load.text('fight-template', './tpl/fight.html');
+        game.load.text('empty-slot-template', './tpl/emptySlot.html');
+
+        game.load.audio('point', 'assets/sounds/point.wav');
+        game.load.audio('hit', 'assets/sounds/hit.wav');
+        game.load.audio('served', 'assets/sounds/cardServed.wav');
+        game.load.audio('dunduun', 'assets/sounds/dunduun.wav');
+        game.load.audio('win', 'assets/sounds/win.wav');
+        game.load.audio('music', 'assets/music/autotracker_placeholder.wav');
+        game.load.audio('fight', 'assets/music/fight.wav');
+
+
+        //Map(s)
+        game.load.tilemap('level1', 'assets/tiled/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.spritesheet('background_tileset', 'assets/pyxel/background_tileset.png', 16, 16);
+        game.load.spritesheet('objects', 'assets/pyxel/object.png', 16, 16);
+        game.load.spritesheet('bronto', 'assets/pyxel/bronto.png', 16, 16);
+        game.load.spritesheet('dino', 'assets/kinds/kind-00-02.png', 32, 32);
+
+
+        //Kind spritesheets
+        var spritesheets = Object.create(null); //Set to avoid dublicates;
+        forEachKindVariant(function (kindVariant) {
+            spritesheets[kindVariant.filename] = kindVariant.filename;
+        });
+        _.forEach(spritesheets, function (filename) {
+            game.load.spritesheet(filename, 'assets/kinds/' + filename, 32, 32);
+        });
+
+        //???
+        this.stage.smoothed = false;
+    };
+
+
+
+
+
     //translate the simple array structure
     function forEachKindVariant(callback) {
         if (_.isArray(KINDS_MAP) && _.isFunction(callback)) {
@@ -26,36 +73,6 @@
             }
         }
     }
-
-    global.assets.preload = function () {
-        var game = $$.game;
-
-        //Handlebar templates
-        game.load.text('character-template', './tpl/character.html');
-        game.load.text('fight-template', './tpl/fight.html');
-        game.load.text('empty-slot-template', './tpl/emptySlot.html');
-
-        //Sounds
-        game.load.audio('served', 'assets/sounds/cardServed.wav');
-        game.load.audio('point', 'assets/sounds/point.wav');
-        game.load.audio('hit', 'assets/sounds/hit.wav');
-
-        //Map(s)
-        game.load.tilemap('level1', 'assets/tiled/level1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.spritesheet('background_tileset', 'assets/pyxel/background_tileset.png', 16, 16);
-
-        //Kind spritesheets
-        var spritesheets = Object.create(null); //Set to avoid dublicates;
-        forEachKindVariant(function (kindVariant) {
-            spritesheets[kindVariant.filename] = kindVariant.filename;
-        });
-        _.forEach(spritesheets, function (filename) {
-            game.load.spritesheet(filename, 'assets/kinds/' + filename, 32, 32);
-        });
-
-        //???
-        this.stage.smoothed = false;
-    };
 
 
     var kinds = {

@@ -168,7 +168,7 @@ $$(function ($$) {
     $$.fight.randomChoose = function () {
         log('randomChoose');
         var index;
-        switch (opponent.strategy) {
+        switch (currentOpponent.strategy) {
             default:
                 index = getRandomInt(0, 2);
         }
@@ -279,14 +279,17 @@ $$(function ($$) {
             //check Result;
             var currentResult = getCurrentResult();
             if (currentResult[PLAYER] >= 3) {
+
                 $$.fight.message("You win.");
+                $$.sounds.win.play();
                 setTimeout(function () {
-                    //TODO: OPPONENT lose health
+
                     if (winCallback)
                         winCallback();
                 }, 500);
                 return;
             } else if (currentResult[OPPONENT] >= 3) {
+
                 $$.fight.message("You lose.");
                 setTimeout(function () {
                     //TODO: PLAYER lose health
@@ -324,8 +327,11 @@ $$(function ($$) {
         $("#fightMessage").html(message);
     };
 
-    $$.fight.init = function (player, opponent, winCallback, loseCallback) {
+    $$.fight.init = function (player, opponent, win, lose) {
         log('init');
+        winCallback = win;
+        loseCallback = lose;
+
         currentPlayer = player;
         currentOpponent = opponent;
         var fightTemplate = Handlebars.compile($$.game.cache.getText("fight-template"));

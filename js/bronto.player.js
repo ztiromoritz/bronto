@@ -1,8 +1,10 @@
 ;
 (function (global) {
-    var Player = function (game, x, y) {
-        Phaser.Sprite.call(this, game, x, y, 'dino');
+    var Player = function (game, x, y, dino) {
+
+        Phaser.Sprite.call(this, game, x, y, dino.variant.filename);
         game.physics.arcade.enable(this);
+        this.dino = dino;
         this.scale.x = -1; //flipped
         this.anchor.setTo(0.5, 1); //so it flips around its middle
         //this.body.setSize(14, 13, 0, 0);
@@ -24,21 +26,63 @@
     Player.prototype.constructor = Player;
 
     Player.prototype.update = function () {
-        var idle = true;
-        //this.body.velocity.x = 0;
-        this.body.velocity.x = 180;
-        //this.x += 2;
-        this.animations.play('run');
 
-        if ((this.cursors.up.isDown )
-            && (this.body.onFloor() || this.body.touching.down)) {
-            this.body.velocity.y = -300;
-            idle = false;
+        if($$.state.mode === MODE_DIALOG || $$.state.mode === MODE_FIGHT){
+            this.body.velocity.x = 0;
+            this.body.velocity.y = 0;
+            this.animations.play('idle');
+        } else if($$.state.mode === MODE_RUNNING){
+            flipRight(this);
+            this.body.velocity.x = 180;
+            this.animations.play('run');
+            if ((this.cursors.up.isDown )
+                && (this.body.onFloor() || this.body.touching.down)) {
+                this.body.velocity.y = -300;
+                idle = false;
+                this.animations.play('jump');
+            }
+
+            if(!(this.body.onFloor() || this.body.touching.down)){
+                idle= false;
+                this.animations.play('jump');
+            }
+
+        } else if($$.state.mode === MODE_EXPLORING){
+            //Kind of a debug mode for now
+            var idle = true;
+            this.body.velocity.x = 0;
+
+            if(this.cursors.left.isDown){
+                this.body.velocity.x = -180;
+                idle = false;
+                flipLeft(this);
+                this.animations.play('run');
+            }
+
+            if(this.cursors.right.isDown){
+                this.body.velocity.x = 180;
+                idle = false;
+                flipRight(this);
+                this.animations.play('run');
+            }
+
+            if ((this.cursors.up.isDown )
+                && (this.body.onFloor() || this.body.touching.down)) {
+                this.body.velocity.y = -300;
+                idle = false;
+            }
+
+            if(!(this.body.onFloor() || this.body.touching.down)){
+                idle= false;
+                this.animations.play('jump');
+            }
+
+            if(idle){
+                this.animations.play('idle');
+            }
         }
-        if(!(this.body.onFloor() || this.body.touching.down)){
-            idle= false;
-            this.animations.play('jump');
-        }
+
+
     };
 
     global.Player = Player;

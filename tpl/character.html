@@ -1,37 +1,39 @@
-<div class="character">
-    <h4>{{name}}</h4>
-    <img class="avatar" src="./assets/kinds/avatars/{{variant.filename}}" width="64"/>
+<div class="character set" data-slot="{{slot}}">
+    <h4>{{dino.name}}</h4>
+    <img class="avatar" src="./assets/kinds/avatars/{{dino.variant.filename}}" width="64"/>
+    <!--<div class="button button_small settings" title="settings" data-slot="{{slot}}"><div class="icon egg{{slot}}"/></div>
+    <div class="button button_small remove" title="remove" data-slot="{{slot}}"><div class="icon vulcano"/></div>-->
     <table class="left">
         <tr>
             <td style="width:80px;">LEVEL/XP</td>
             <td style="width:120px;">
-                {{level}}/{{xp}}
+                {{dino.level}}/{{dino.xp}}
             </td>
             <td style="width:80px;">STRENGTH</td>
             <td style="width:120px;">
-                <div class="bar strength" style="width: {{strength}}px;"></div>
+                <div class="bar strength" style="width: {{dino.strength}}px;"></div>
             </td>
         </tr>
         <tr>
             <td>HEALTH</td>
             <td>
-                <div class="bar health" style="width: {{health}}px;">
-                    <div class="current_health_left" style="width: {{current_health}}px;"></div>
+                <div class="bar health" style="width: {{dino.health}}px;">
+                    <div class="current_health_left" style="width: {{dino.current_health}}px;"></div>
                 </div>
             </td>
             <td>SPEED</td>
             <td>
-                <div class="bar speed" style="width: {{speed}}px;"></div>
+                <div class="bar speed" style="width: {{dino.speed}}px;"></div>
             </td>
         </tr>
         <tr>
             <td>ATTACK</td>
             <td>
-                <div class="bar attack" style="width: {{attack}}px;"></div>
+                <div class="bar attack" style="width: {{dino.attack}}px;"></div>
             </td>
             <td>JUMP</td>
             <td>
-                <div class="bar jump" style="width: {{jump}}px;"></div>
+                <div class="bar jump" style="width: {{dino.jump}}px;"></div>
             </td>
         </tr>
     </table>

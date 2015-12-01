@@ -58,7 +58,7 @@ h1 {
     transform:scale(1.5,1);
     -webkit-transform:scale(1.5,1);
     margin-bottom: 6px;
-    margin-top: 0px;
+    margin-top: 16px;
 }
 
 h3 {
@@ -66,9 +66,19 @@ h3 {
     margin-bottom : 5px;
 }
 
+.credits{
+    padding-top:28px;
+}
+
+.credits p{
+    margin-top:0px;
+    margin-bottom: 6px;
+}
+
 .character {
+    position: relative;
     border: 2px solid #d04648;
-    background-color: #dad45e;
+    background-color: #adc5d2;/*#dad45e;*/
     border-radius: 3px;
     margin: 0 auto;
     width: 360px;
@@ -89,6 +99,17 @@ h3 {
     text-align: left;
 }
 
+.character.set:hover {
+    background-color:  #dad45e;
+    text-shadow: 0px 0px #8595a1;
+}
+
+#characterOverview #button_title_back {
+    position: absolute;
+    margin: 0;
+    top: 0px;
+    left: 20px;
+}
 
 
 table.left div {
@@ -160,9 +181,10 @@ td {
     padding-top: 5px;
 }
 
+
 .button {
     border: 2px solid #222222;
-    background-color: #d04648;
+    background-color: /*#d04648;*/ #d27d2c;
     color: #deeed6;
     text-shadow: 1px 2px #222222;
     border-radius: 5px;
@@ -170,7 +192,17 @@ td {
     height: 36px;
     line-height: 26px;
     width: 200px;
-    margin: 15px auto;
+    margin: 26px auto;
+}
+
+.button.button_small {
+    height: 36px;
+    width: 36px;
+}
+
+.button.button_small .icon {
+    float: left;
+    margin: 8px;
 }
 
 .button:hover {
@@ -180,6 +212,27 @@ td {
 
 .button img {
     float: left;
+}
+
+.button .icon {
+    float: left;
+    margin: 8px;
+}
+
+.character .button_small {
+    margin: 0;
+    position: absolute;
+
+}
+
+.character .button_small.settings {
+    right: -42px;
+    top: -2px;
+}
+
+.character .button_small.remove {
+    right: -42px;
+    top: 38px;
 }
 
 #wrapper {
@@ -209,8 +262,8 @@ td {
 
 #background {
     overflow: hidden;
-    opacity: 0.1;
-    filter: alpha(opacity=15); /* For IE8 and earlier */
+    opacity: 0.2;
+    filter: alpha(opacity=20); /* For IE8 and earlier */
 }
 
 #background2 {
@@ -383,5 +436,20 @@ td {
     top: 200px;
 }
 
+#dialog .message {
+    border-radius: 3px;
+    position: absolute;
+    width: 440px;
+    left:20px;
+    top: 10px;
+    height: 80px;
+    background-color: #30346d;
+    color: #deeed6;
+}
+
+
+.name {
+    color: #dad45e;
+}
 
 

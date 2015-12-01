@@ -4,7 +4,15 @@
     <meta charset="UTF-8"/>
     <title>Bronto</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
+    <meta name="apple-mobile-web-app-title" content="Bronto"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <link href="assets/favicon.png" sizes="16x16" rel="apple-touch-icon"/>
+    <meta name="viewport" content="minimal-ui">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/objects.css">
+
     <script src="js/phaser/phaser.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-mobile-bower/js/jquery.mobile-1.4.5.js"></script>
@@ -12,108 +20,29 @@
     <script src="bower_components/handlebars/handlebars.js"></script>
 
     <script src="assets/kinds/kinds.js"></script>
-    <script src="assets/names.js"></script>
-
+    <script src="assets/text/names.js"></script>
+    <script src="assets/text/messages.js"></script>
+    <script src="js/bronto.util.js"></script>
     <script src="js/bronto.global.js"></script>
     <script src="js/bronto.assets.js"></script>
+    <script src="js/bronto.dialog.js"></script>
+    <script src="js/bronto.sound.js"></script>
     <script src="js/bronto.dino.js"></script>
+    <script src="js/bronto.objects.js"></script>
     <script src="js/bronto.player.js"></script>
     <script src="js/bronto.npc.js"></script>
     <script src="js/bronto.mammals.js"></script>
-    <script src="js/bronto.util.js"></script>
+    <script src="js/bronto.ui.js"></script>
     <script src="js/bronto.fight.js"></script>
 
+    <script src="js/bronto.game.js"></script>
 
-    <meta name="apple-mobile-web-app-title" content="Bronto"/>
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="apple-mobile-web-app-capable" content="no"/>
-    <link href="assets/favicon.png" sizes="16x16" rel="apple-touch-icon"/>
-    <meta name="viewport" content="minimal-ui">
-
-    <script>
-
-        var character = dino.createRandomPlayer();
-        var opponent = dino.createRandomNPC();
-
-        $(function () {
-
-            var tileLayer;
-
-            function characterTest(){
-                var characterSheet = Handlebars.compile($$.game.cache.getText("character-template"));
-                var emptySlot = Handlebars.compile($$.game.cache.getText("empty-slot-template"));
-                $('#slot1').html(characterSheet(dino.createRandomPlayer()));
-                $('#slot2').html(emptySlot({slot: 2 }));
-                $('#slot3').html(characterSheet(dino.createRandomPlayer()));
-            }
-
-            function create(){
-
-                this.stage.smoothed = false;
-                $$.init();
-                //TODO: sound class
-                $$.sounds = {};
-                $$.sounds.served = this.add.audio('served');
-                $$.sounds.served.allowMultiple = true;
-                $$.sounds.point = this.add.audio('point');
-                $$.sounds.point.allowMultiple = true;
-                $$.sounds.hit = this.add.audio('hit');
-                $$.sounds.hit.allowMultiple = true;
-                this.sound.mute = true;
-
-                characterTest();
-                $$.fight.init(character, opponent);
-                this.physics.startSystem(Phaser.Physics.ARCADE);
-
-                console.log(this.renderer);
-                $$.game.renderer.renderSession.roundPixels = true;
-
-                var map = this.add.tilemap('level1');
-                map.addTilesetImage('background_tileset', 'background_tileset');
-                tileLayer = map.createLayer('Ground');
-                tileLayer.resizeWorld();
-                map.setCollision(getGIDs('solid', map, "solid"), true, tileLayer);
-                console.log(getGIDs('solid', map, "solid"));
-
-                player = new Player($$.game,30, 300);
-                this.add.existing(player);
-                this.camera.follow(player,  Phaser.Camera.FOLLOW_LOCKON);
-                console.log(tileLayer);
-                this.physics.arcade.enable(tileLayer);
-                //tileLayer.fixedToCamera = false;
-            }
-
-            function update(){
-                //tileLayer.body.velocity.x = -1500;
-                this.physics.arcade.collide(player, tileLayer);
-            }
-
-            $$.game = new Phaser.Game(480, 320,
-                    Phaser.AUTO,
-                    'game',
-                    {preload: assets.preload, create: create, update: update},
-                    true, //transparent
-                    true   //antialias
-            );
-
-        });
-
-    </script>
-
+    <script>$$(function(){ui.showTitle();});</script>
 
 
 </head>
 <body>
 <div style="width: 960px; margin: 20px auto; text-align: center;">
-
-    <div class="title">
-
-    <h1>Bronto</h1>
-
-    <h3>A dinosaur runner rpg</h3>
-
-    </div>
-
 
 
     <div id="wrapper">
@@ -122,22 +51,31 @@
 
         </div>
 
-        <!--
-        <div id="background" class="screen">
+        <div id="loading">
+
+        </div>
+
+
+        <!--<div id="background" class="screen">
             <img src="assets/out.gif" class="stretch" alt="" />
-        </div>
-        -->
+        </div>-->
 
-        <div id="game" class="screen"></div>
 
-        <div id="fight_screen" class="screen" style="visibility: hidden;">
+        <div id="game" class="screen base_screen">
 
         </div>
 
-        <div id="characters" class="screen">
-            <div id="slot1" ></div>
-            <div id="slot2"></div>
-            <div id="slot3"></div>
+        <div id="fight_screen" class="screen base_screen" >
+
+        </div>
+
+        <div id="ui" class="screen base_screen">
+
+        </div>
+
+        <div id="dialog" class="screen dialog" style="display:none;">
+            <div class="message">
+            </div>
         </div>
 
 

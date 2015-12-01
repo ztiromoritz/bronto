@@ -48,13 +48,13 @@ Phaser.Tilemap.prototype.getTileinfoByProperty = function (type, property ){
                 var tileset = this.tilesets[i].name;
                 var properties = this.tilesets[i].tileProperties;
                 result.push( {
-                    frame : frame, gid: gid , tileset : tileset
+                    frame : frame, gid: gid , tileset : tileset, properties: properties
                 } )
             }
         }
     }
     if (result.length === 0)
-        console.error("Error: No Tiles found! for "+ property +"="+ value);
+        console.error("Error: No Tiles found! for "+ property +"=" + type);
     return result;
 };
 
