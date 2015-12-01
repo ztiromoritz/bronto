@@ -9,6 +9,8 @@ $(function () {
 
     function create() {
 
+        $('#loading').hide();
+
         $$.game.stage.smoothed = false;
         $$.init();
         $$.game.renderer.renderSession.roundPixels = true;

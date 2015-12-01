@@ -34,6 +34,10 @@
         game.load.spritesheet('bronto', 'assets/pyxel/bronto.png', 16, 16);
         game.load.spritesheet('dino', 'assets/kinds/kind-00-02.png', 32, 32);
 
+        game.load.onFileComplete.add(function (progress, key, success) {
+            $('#loading').html(progress+'%');
+        }, game);
+
 
         //Kind spritesheets
         var spritesheets = Object.create(null); //Set to avoid dublicates;
