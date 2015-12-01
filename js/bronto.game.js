@@ -10,6 +10,7 @@ $(function () {
     function create() {
 
         $('#loading').hide();
+        $('#background').hide();
 
         $$.game.stage.smoothed = false;
         $$.init();
