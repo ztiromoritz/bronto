@@ -17,3 +17,5 @@ var MESSAGES_BRONTO_INIT = [
 
     "But be careful, the wild lands are the home of dangerous creatures. Although you are one of the strongest and bravest, be careful {{playername}}"
 ];
+
+

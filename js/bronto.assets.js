@@ -17,6 +17,7 @@
         game.load.text('character-template', './tpl/character.html');
         game.load.text('fight-template', './tpl/fight.html');
         game.load.text('empty-slot-template', './tpl/emptySlot.html');
+        game.load.text('hud-template', './tpl/hud.html');
 
         game.load.audio('point', 'assets/sounds/point.wav');
         game.load.audio('hit', 'assets/sounds/hit.wav');
@@ -32,7 +33,7 @@
         game.load.spritesheet('background_tileset', 'assets/pyxel/background_tileset.png', 16, 16);
         game.load.spritesheet('objects', 'assets/pyxel/object.png', 16, 16);
         game.load.spritesheet('bronto', 'assets/pyxel/bronto.png', 16, 16);
-        game.load.spritesheet('dino', 'assets/kinds/kind-00-02.png', 32, 32);
+        //game.load.spritesheet('dino', 'assets/kinds/kind-00-02.png', 32, 32);
 
         game.load.onFileComplete.add(function (progress, key, success) {
             $('#loading').html(progress+'%');
@@ -46,6 +47,7 @@
         });
         _.forEach(spritesheets, function (filename) {
             game.load.spritesheet(filename, 'assets/kinds/' + filename, 32, 32);
+            game.load.image("avatar-"+filename, 'assets/kinds/avatars/' + filename);
         });
 
         //???

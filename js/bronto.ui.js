@@ -5,6 +5,7 @@ $$(function($$,global){
     var characterOverview = Handlebars.compile($$.game.cache.getText("characterOverview-template"));
     var characterSheet = Handlebars.compile($$.game.cache.getText("character-template"));
     var emptySlot = Handlebars.compile($$.game.cache.getText("empty-slot-template"));
+    var hud = Handlebars.compile($$.game.cache.getText("hud-template"));
 
     var ui = {};
 
@@ -69,10 +70,17 @@ $$(function($$,global){
         $('.base_screen').hide();
         $('#game').show();
         $$.gameHelper.startLevel();
+        ui.updateHUD();
         dialog.showMessages(MESSAGES_BRONTO_INIT, function(){
             $$.state.mode = MODE_RUNNING;
             $$.sounds.music.play("",0,1,true);
         });
+
+    };
+
+    ui.updateHUD = function(){
+        console.log($$.state.dino);
+        $('#hud').html(hud({dino: $$.dino}));
     };
 
     ui.showFight = function(){
@@ -82,7 +90,6 @@ $$(function($$,global){
     };
 
     ui.hideFight = function(){
-
         $('#fight_screen').fadeOut(300);
         $('#game').show();
     };

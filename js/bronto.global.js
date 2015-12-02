@@ -24,9 +24,10 @@ var MODE_EXPLORING = 4; //TODO:
 
 
     $$.state = {
-        dino: null,
         mode: MODE_MENU
     };
+
+    $$.dino = null;
 
     global.$$ = $$;
 

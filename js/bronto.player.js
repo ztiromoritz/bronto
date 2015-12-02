@@ -35,7 +35,7 @@
             flipRight(this);
             this.body.velocity.x = 180;
             this.animations.play('run');
-            if ((this.cursors.up.isDown )
+            if ((this.cursors.up.isDown || this.game.input.pointer1.isDown)
                 && (this.body.onFloor() || this.body.touching.down)) {
                 this.body.velocity.y = -300;
                 idle = false;
