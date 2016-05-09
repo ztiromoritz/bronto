@@ -7,6 +7,7 @@ var MODE_DIALOG = 1;
 var MODE_RUNNING = 2;
 var MODE_FIGHT = 3;
 var MODE_EXPLORING = 4; //TODO:
+var MODE_RESPAWN = 5;
 
 ;
 (function (global) {

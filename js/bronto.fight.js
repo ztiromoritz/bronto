@@ -281,17 +281,24 @@ $$(function ($$) {
             if (currentResult[PLAYER] >= 3) {
 
                 $$.fight.message("You win.");
+                currentOpponent.current_health = currentOpponent.current_health - currentPlayer.strength;
+                ui.updateHUD();
+                $('.current_health_right').animate({width: currentOpponent.current_health +"px"}, 400);
                 $$.sounds.win.play();
                 setTimeout(function () {
-
                     if (winCallback)
                         winCallback();
                 }, 500);
                 return;
             } else if (currentResult[OPPONENT] >= 3) {
-
                 $$.fight.message("You lose.");
+                currentPlayer.current_health = currentPlayer.current_health - currentOpponent.strength;
+                $('.current_health_left').animate({width: currentPlayer.current_health +"px"}, 400);
+                ui.updateHUD();
+                //TODO: Handle game over...
                 setTimeout(function () {
+
+
                     //TODO: PLAYER lose health
                     if (loseCallback)
                         loseCallback();

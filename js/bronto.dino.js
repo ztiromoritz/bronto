@@ -79,12 +79,12 @@
             "bodyOffsetX": 0,
             "bodyOffsetY": 0
         },
-        "speed": 15,
-        "jump": 6,
+        "speed": 20,
+        "jump": 10,
         "strength": 7,
-        "attack": 4,
-        "health": 18,
-        "current_health": 18
+        "attack": 8,
+        "health": 40,
+        "current_health": 40
     };
     dino.default2 = {
         "level": 1,
@@ -100,12 +100,12 @@
             "bodyOffsetX": 0,
             "bodyOffsetY": 0
         },
-        "speed": 14,
-        "jump": 11,
+        "speed": 12,
+        "jump": 20,
         "strength": 10,
-        "attack": 4,
-        "health": 16,
-        "current_health": 16
+        "attack": 10,
+        "health": 40,
+        "current_health": 40
     };
 
     dino.default3 = {
@@ -122,12 +122,12 @@
             "bodyOffsetX": 0,
             "bodyOffsetY": 0
         },
-        "speed": 12,
+        "speed": 10,
         "jump": 5,
-        "strength": 6,
-        "attack": 7,
-        "health": 17,
-        "current_health": 17
+        "strength": 20,
+        "attack": 5,
+        "health": 40,
+        "current_health": 40
     };
 
     dino.getSlot = function (index) {

@@ -32,12 +32,11 @@
         game.load.tilemap('level1', 'assets/tiled/level1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.spritesheet('background_tileset', 'assets/pyxel/background_tileset.png', 16, 16);
         game.load.spritesheet('objects', 'assets/pyxel/object.png', 16, 16);
+        game.load.spritesheet('vulcanos', 'assets/pyxel/vulcanos.png', 16, 16);
         game.load.spritesheet('bronto', 'assets/pyxel/bronto.png', 16, 16);
         //game.load.spritesheet('dino', 'assets/kinds/kind-00-02.png', 32, 32);
 
-        game.load.onFileComplete.add(function (progress, key, success) {
-            $('#loading').html(progress+'%');
-        }, game);
+
 
 
         //Kind spritesheets
@@ -50,8 +49,12 @@
             game.load.image("avatar-"+filename, 'assets/kinds/avatars/' + filename);
         });
 
+        game.load.onFileComplete.add(function (progress, key, success) {
+            $('#loading').html(progress+'%');
+        }, game);
+
         //???
-        this.stage.smoothed = false;
+        //this.stage.smoothed = false;
     };
 
 

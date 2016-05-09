@@ -1,0 +1,33 @@
+{
+  "name": "garfunkel",
+  "main": "garfunkel.js",
+  "version": "0.2.0",
+  "homepage": "https://github.com/ztiromoritz/garfunkel",
+  "authors": [
+    "Moritz Rebbert <moritz.rebbert@udo.edu>"
+  ],
+  "description": "2D geometry toolbox",
+  "keywords": [
+    "2d",
+    "vectors",
+    "arithmetic"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "899e49f64a44d178c000db2e6654910d820c6704"
+  },
+  "_source": "git://github.com/ztiromoritz/garfunkel.git",
+  "_target": "~0.2.0",
+  "_originalSource": "garfunkel",
+  "_direct": true
+}

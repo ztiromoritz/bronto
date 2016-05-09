@@ -30,21 +30,17 @@ html, body {
     box-sizing: border-box;
 }
 
-#container {
+#wrapper {
+    transform: scale(1);
     position: absolute;
     top: 50%;
+    left: 50%;
     margin-top: -160px;/* half of #content height*/
-    left: 0;
-    width: 100%;
-}
-
-#window {
+    margin-left: -240px;
     width: 480px;
     height: 320px;
-    margin: 0 auto;
     text-align: center;
 }
-
 
 img, canvas {
     image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
@@ -95,13 +91,15 @@ h3 {
     border: 2px solid #d04648;
     background-color: #adc5d2;/*#dad45e;*/
     border-radius: 3px;
-    margin: 0 auto;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 7px;
     width: 360px;
-    height: 94px;
+    height: 90px;
     font-family: "SomepxNew";
     font-size: 1em;
     padding: 0px 0px 7px 9px;
-    margin-top: 7px;
 }
 
 .character .avatar {
@@ -122,8 +120,12 @@ h3 {
 #characterOverview #button_title_back {
     position: absolute;
     margin: 0;
-    top: 0px;
+    top: 26px;
     left: 20px;
+}
+
+#characterOverview h3 {
+    line-height: 22px;
 }
 
 
@@ -148,7 +150,7 @@ td {
 
 .health {
     position: relative;
-    background-color: #deeed6 ;
+    background-color: #d3d9dd ;
 }
 
 .current_health_left {
@@ -189,6 +191,7 @@ td {
     margin: 0;
     paddin: 0;
     text-align: left;
+    line-height: 20px;
 }
 
 .avatar {
@@ -250,14 +253,7 @@ td {
     top: 38px;
 }
 
-#wrapper {
-    transform: scale(1);
-    position: relative;
-    width: 480px;
-    height: 320px;
-    margin: 0px auto;
-    display: block;
-}
+
 
 .screen {
     position: absolute;
