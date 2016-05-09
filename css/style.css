@@ -15,6 +15,8 @@
 #6dc2ca
 #dad45e
 #deeed6
+
+#b6bfc7
 */
 
 html, body {
@@ -28,7 +30,23 @@ html, body {
     box-sizing: border-box;
 }
 
-img {
+#container {
+    position: absolute;
+    top: 50%;
+    margin-top: -160px;/* half of #content height*/
+    left: 0;
+    width: 100%;
+}
+
+#window {
+    width: 480px;
+    height: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+img, canvas {
     image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
     image-rendering: -moz-crisp-edges;          /* Firefox                        */
     image-rendering: -o-crisp-edges;            /* Opera                          */
@@ -55,7 +73,7 @@ h1 {
     transform:scale(1.5,1);
     -webkit-transform:scale(1.5,1);
     margin-bottom: 6px;
-    margin-top: 0px;
+    margin-top: 16px;
 }
 
 h3 {
@@ -63,16 +81,51 @@ h3 {
     margin-bottom : 5px;
 }
 
+.credits{
+    padding-top:28px;
+}
+
+.credits p{
+    margin-top:0px;
+    margin-bottom: 6px;
+}
+
 .character {
+    position: relative;
     border: 2px solid #d04648;
-    background-color: #dad45e;
+    background-color: #adc5d2;/*#dad45e;*/
     border-radius: 3px;
     margin: 0 auto;
-    width: 260px;
+    width: 360px;
+    height: 94px;
     font-family: "SomepxNew";
     font-size: 1em;
     padding: 0px 0px 7px 9px;
+    margin-top: 7px;
 }
+
+.character .avatar {
+    transform: scale(-1,1);
+    padding: 0;
+    margin-right: 18px;
+}
+
+.character table {
+    text-align: left;
+}
+
+.character.set:hover {
+    background-color:  #dad45e;
+    text-shadow: 0px 0px #8595a1;
+}
+
+#characterOverview #button_title_back {
+    position: absolute;
+    margin: 0;
+    top: 0px;
+    left: 20px;
+}
+
 
 table.left div {
     float: left;
@@ -143,16 +196,28 @@ td {
     padding-top: 5px;
 }
 
+
 .button {
-    border: 2px solid #dad45e;
-    background-color: #d04648;
+    border: 2px solid #222222;
+    background-color: /*#d04648;*/ #d27d2c;
     color: #deeed6;
     text-shadow: 1px 2px #222222;
     border-radius: 5px;
     display: block;
-    height: 32px;
+    height: 36px;
+    line-height: 26px;
     width: 200px;
-    margin: 15px auto;
+    margin: 26px auto;
+}
+
+.button.button_small {
+    height: 36px;
+    width: 36px;
+}
+
+.button.button_small .icon {
+    float: left;
+    margin: 8px;
 }
 
 .button:hover {
@@ -164,12 +229,33 @@ td {
     float: left;
 }
 
+.button .icon {
+    float: left;
+    margin: 8px;
+}
+
+.character .button_small {
+    margin: 0;
+    position: absolute;
+
+}
+
+.character .button_small.settings {
+    right: -42px;
+    top: -2px;
+}
+
+.character .button_small.remove {
+    right: -42px;
+    top: 38px;
+}
+
 #wrapper {
-    transform: scale(2);
+    transform: scale(1);
     position: relative;
     width: 480px;
     height: 320px;
-    margin: 0 auto;
+    margin: 0px auto;
     display: block;
 }
 
@@ -182,6 +268,39 @@ td {
 
 }
 
+.hud .points{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 170px;
+    height: 50px;
+}
+
+.hud .points .life {
+    width: 100px;
+    height: 18px;
+    float: left;
+}
+
+.hud .points .life .bar{
+    margin-left: 10px;
+
+}
+
+.hud .points .xp {
+    line-height: 12px;
+    width: 60px;
+    float: left;
+    text-align: right;
+}
+
+#hud_button{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    margin: 0;
+}
+
 .stretch {
     min-height:100%;
     width:auto;
@@ -191,8 +310,8 @@ td {
 
 #background {
     overflow: hidden;
-    opacity: 0.1;
-    filter: alpha(opacity=15); /* For IE8 and earlier */
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 #background2 {
@@ -204,7 +323,8 @@ td {
 
 .frame {
     border: 2px solid #d04648;
-    background-color: #dad45e;
+    /*background-color: #dad45e;*/
+    background-color: #b6bfc7;
     border-radius: 3px;
     margin: 10px auto;
     width: 460px;
@@ -222,6 +342,10 @@ td {
     z-index: 6;
 }
 
+#fight_screen {
+    background-color: #deeed6;
+}
+
 .fight h2 {
     margin-top: 4px;
 }
@@ -234,17 +358,26 @@ td {
     z-index: 4;
 }
 
+.relative {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .ball img {
     position: absolute;
     margin: auto;
-    top: 0;
+    top: -16px;
     left: 0;
     right: 0;
     bottom: 0;
+    object-fit: none;
+    transform: scale(2);
 }
 
 #charFrame img{
-    transform: scale(-1,1);
+    transform: scale(-2,2);
 }
 
 #charFrame  {
@@ -355,5 +488,20 @@ td {
     top: 200px;
 }
 
+#dialog .message {
+    border-radius: 3px;
+    position: absolute;
+    width: 440px;
+    left:20px;
+    top: 56px;
+    height: 80px;
+    background-color: #30346d;
+    color: #deeed6;
+}
+
+
+.name {
+    color: #dad45e;
+}
 
 

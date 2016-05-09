@@ -48,13 +48,13 @@ Phaser.Tilemap.prototype.getTileinfoByProperty = function (type, property ){
                 var tileset = this.tilesets[i].name;
                 var properties = this.tilesets[i].tileProperties;
                 result.push( {
-                    frame : frame, gid: gid , tileset : tileset
+                    frame : frame, gid: gid , tileset : tileset, properties: properties
                 } )
             }
         }
     }
     if (result.length === 0)
-        console.error("Error: No Tiles found! for "+ property +"="+ value);
+        console.error("Error: No Tiles found! for "+ property +"=" + type);
     return result;
 };
 
@@ -108,4 +108,38 @@ function getTileProperties(gid, map) {
         }
     }
     return {};
+}
+
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/**
+ * Takes a dice description in the form of
+ * 1d6+10 where both parts are optional.
+ * So valid String would be:
+ *  1d6+10
+ *  2d10
+ *  7
+ * @param diceString
+ * @returns
+ *      a "role of the dice as describe by this notations"
+ */
+function roleDice( diceString ){
+    var NUMBER = /^[0-9]+$/;
+    var DIE_NUMBER = /^([0-9]+)d([0-9]+)(\+[0-9]+)?$/;
+    if(!diceString)
+        return 0;
+
+    if(diceString.match(NUMBER))
+        return parseInt(diceString);
+
+    if(diceString.match(DIE_NUMBER)){
+        var regexResult = DIE_NUMBER.exec(diceString);
+        var mult = parseInt(regexResult[1]);
+        var die = parseInt(regexResult[2]);
+        var add = _.isUndefined(regexResult[3])?0:parseInt(regexResult[3].substr(1));
+        return mult * getRandomInt(1,die) + add;
+    }
 }

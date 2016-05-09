@@ -4,7 +4,10 @@
 
         <div class="char">
             <div id="charFrame" class="ball">
-                <img class="avatar" src="{{player.img}}" width="64"/>
+                <div class="relative">
+
+                <img class="avatar" src="./assets/kinds/avatars/{{player.variant.filename}}" width="64"/>
+                </div>
             </div>
             <div id="charRock" class="ball rlv rock"></div>
             <div id="charLeave" class="ball rlv leave"></div>
@@ -31,7 +34,7 @@
         </div>
         <div class="opponent">
             <div id="opponentFrame" class="ball">
-                <img class="avatar" src="{{opponent.img}}" width="64"/>
+                <img class="avatar" src="./assets/kinds/avatars/{{opponent.variant.filename}}" width="64" />
             </div>
             <div id="opponentChoice" class="ball choice"></div>
             <div class="point" id="opponentPoint1"></div>

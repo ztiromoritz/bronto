@@ -1,0 +1,43 @@
+.icon {
+    background-image: url('../assets/pyxel/object.png');
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+}
+
+
+.icon.vulcano {
+    background-position: -32px -32px;
+}
+
+.icon.stone {
+    background-position: -64px -16px;
+}
+
+.icon.leaf {
+     background-position: -64px -64px;
+ }
+
+.icon.leaf_button {
+    background-position: -80px -64px;
+}
+
+.icon.cross {
+    background-position: -96px -64px;
+}
+
+.icon.back {
+    background-position: -112px -64px;
+}
+
+.icon.egg1{
+    background-position: -80px -32px;
+}
+
+.icon.egg2 {
+    background-position: -96px -32px;
+}
+
+.icon.egg3{
+    background-position: -112px -32px;
+}
