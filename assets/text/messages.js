@@ -1,7 +1,7 @@
 var MESSAGES_BRONTO_INIT = [
-    "Hello {{playername}}. Good to see you.",
+    "Hello {{playername}}. Good to see you."
 
-    "Last night, i couldn't sleep.",
+    /*"Last night, i couldn't sleep.",
 
     "I ate some seaweed and took a walk around my families place.",
 
@@ -15,7 +15,5 @@ var MESSAGES_BRONTO_INIT = [
 
     "Please run to the wild lands and try to find out, which fateful incident happened last night.",
 
-    "But be careful, the wild lands are the home of dangerous creatures. Although you are one of the strongest and bravest, be careful {{playername}}"
+    "But be careful, the wild lands are the home of dangerous creatures. Although you are one of the strongest and bravest, be careful {{playername}}"*/
 ];
-
-
